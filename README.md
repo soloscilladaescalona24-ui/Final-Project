@@ -1,14 +1,14 @@
-Employee Management System
+Employee Management System:
 Is a secure, lightweight, and highly optimized web-based CRUD (Create, Read, Update, Delete) application built using PHP (Procedural style) and MySQL. This system is specifically
 designed to manage internal company directory records, handle organizational departments, and safely provision system authentication accounts while enforcing strict database referential
 integrity.
 
-Core System Overview
+Core System Overview:
 The Employee Management System serves as a secure central dashboard for administrative personnel. The application minimizes architectural complexity down to
 three core tables to guarantee ease of deployment while dynamically executing database protection protocols. Administrators can seamlessly onboard staff, assign them 
 to distinct corporate divisions, manage personal profile attributes, provision unique application logins, and execute safe purges without causing orphan records or application crashes.
 
-Key Features & Capabilities
+Key Features & Capabilities:
 Full CRUD Life-cycle: Complete, safe implementation of CRUD actions across all operational tables.
 Smart Dropdown Select Menus: Form select inputs dynamically retrieve up-to-date data from parent tables (e.g., Department dropdown draws from the department table;
 Employee ID dropdown draws from the employee table).
@@ -16,7 +16,7 @@ SQL Injection Countermeasures: 100% integration of native MySQL Prepared Stateme
 Cross-Site Scripting (XSS) Defenses: Automatic output encoding via htmlspecialchars() to guarantee browser safety.
 Post-Redirect-Get (PRG) Workflow Pattern: Redirect structures clear form memories upon transaction completion to prevent duplicate values when refreshing pages (F5).
 
-Database & Architectural Design
+Database & Architectural Design:
 The website operates on an three-table relational model designed to prevent data redundancy and separate administrative directory details from security profiles:
 
 1. department Table (Lookup Table)
@@ -90,7 +90,7 @@ http://localhost/websys/index.php, it will directly lead to the main page.
  )
 
 
-Security Framework
+Security Framework:
 The application implements rigorous structural checks to maintain system hygiene:
 SQL Injection Blockers: Raw input is never directly injected into query statements. Inputs are dynamically bound to safe database parameters using mysqli_stmt_bind_param and designated 
 type specifiers (s for string, i for integer).
@@ -100,7 +100,7 @@ filter_var($email, FILTER_VALIDATE_EMAIL) screens out invalid address strings.
 Cross-Site Scripting (XSS) Sanitization: htmlspecialchars() is automatically used across all output variables to convert standard HTML syntax elements like < and > into
 harmless textual representations, preventing browser manipulation.
 
-How It Works (Code Basics)
+How It Works (Code Basics):
 Post-Redirect-Get (PRG) Pattern
 To prevent browsers from displaying warning dialogs or duplicating record transactions when a user clicks the reload button (F5), the system processes actions and then redirects:
 // After processing logic successfully...
@@ -108,7 +108,7 @@ header("Location: Empcreate.php");
 exit();
 
 
-Session Messaging
+Session Messaging:
 Since redirects completely reload the page, temporary status notifications are stored in session memory buffers. They are read, displayed, and safely unset once rendered:
 if (isset($_SESSION['msg'])) {
     echo $_SESSION['msg'];
