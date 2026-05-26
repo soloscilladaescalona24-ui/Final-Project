@@ -30,27 +30,29 @@ EmployeeID (INT, Primary Key, Auto-Increment)
 FirstName (VARCHAR(50), Not Null)
 MiddleName (VARCHAR(50), Nullable)
 LastName (VARCHAR(50), Not Null)
-Gender (VARCHAR(10), Nullable)
+Gender (VARCHAR(50), Not Null)
 BirthDate (DATE, Not Null)
-ContactNumber (VARCHAR(20), Nullable)
+ContactNumber (VARCHAR(50), Not Null)
 EmailAddress (VARCHAR(100), Unique, Nullable)
-Street (VARCHAR(255), Nullable)
-City (VARCHAR(100), Nullable)
-Province (VARCHAR(100), Nullable)
+Street (VARCHAR(50), NOT NULL)
+City (VARCHAR(50), NOT Null)
+Province (VARCHAR(50), Not Null)
 DepartmentID (INT, Foreign Key referencing department(DepartmentID), Nullable)
 
 3. useraccount Table (Security Table)
 Isolates sensitive security authentication profiles on a strict one to one matching basis.
 UserID (INT, Primary Key, Auto-Increment)
-Username (VARCHAR(50), Unique, Not Null)
-Pass (VARCHAR(255), Not Null)
-Role (VARCHAR(20), Not Null)
+Username (VARCHAR(50), Unique, Null)
+Pass (VARCHAR(50), Not Null)
+Role (VARCHAR(50), Not Null)
 EmployeeID (INT, Unique, Foreign Key referencing employee(EmployeeID))
 
 Local Installation & Setup (XAMPP)
 Follow these step-by-step instructions to set up the system locally on your environment:
+
 Step 1: Install XAMPP
 Download and install XAMPP (with Apache, PHP, and MySQL) from Apache Friends.
+
 Step 2: Deploy Project Files
 Navigate to your XAMPP web root directory and create a new folder named websys (* I named the folder websys, however you can change it to whichever you prefer as long as the folder 
 and the files inside it are inside the htdocs folder inside xampp folder ). Place all the project files (.php, .css) directly inside it:
@@ -59,48 +61,13 @@ C:\xampp\htdocs\websys\
 
 Step 3: Start Services
 Open the XAMPP Control Panel and click the Start buttons next to Apache and MySQL. Both services should show green status.
+
 Step 4: Import Database Schema
 Open your web browser and go to: http://localhost/phpmyadmin/
 In the left panel, click New to create a database.
-Name the database crud and select utf8mb4_general_ci sorting representation, then click Create.
-Select the newly created crud database, open the SQL tab, copy the following script, and click Go:
-
-CREATE TABLE department (
-    DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
-    DepartmentName VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE employee (
-    EmployeeID INT AUTO_INCREMENT PRIMARY KEY,
-    FirstName VARCHAR(50) NOT NULL,
-    MiddleName VARCHAR(50),
-    LastName VARCHAR(50) NOT NULL,
-    BirthDate DATE NOT NULL,
-    ContactNumber VARCHAR(20),
-    EmailAddress VARCHAR(100) UNIQUE,
-    Street VARCHAR(255),
-    City VARCHAR(100),
-    Province VARCHAR(100),
-    Gender VARCHAR(10),
-    DepartmentID INT,
-    FOREIGN KEY (DepartmentID) REFERENCES department(DepartmentID) ON DELETE SET NULL
-);
-
-CREATE TABLE useraccount (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50) UNIQUE NOT NULL,
-    Pass VARCHAR(255) NOT NULL,
-    Role VARCHAR(20) NOT NULL,
-    EmployeeID INT UNIQUE NOT NULL,
-    FOREIGN KEY (EmployeeID) REFERENCES employee(EmployeeID) ON DELETE CASCADE
-);
-
--- Seed Initial Test Department
-INSERT INTO department (DepartmentName) VALUES 
-('Human Resources'),
-('Information Technology'),
-('Finance');
-
+Name the database "crud" and select utf8mb4_general_ci sorting representation, then click Create.
+Download the crud(1).sql file in this repo, select the newly created crud database, click import and select the downloaded sql file (crud(1).sql),  and click import.
+the database and tables will be set automatically.
 
 Step 5: Verify Connection Configuration
 Verify that your database configuration file (db.php) has the correct credentials to link with MySQL:
@@ -113,7 +80,7 @@ if (!$conn) {
 ?>
 
 
-Step 6: Run the Web Application
+Step 6: Run the Web Page
 Open your web browser and load the application using:
 http://localhost/websys/login.php
 (Again, if you modified the folder name websys, make sure it matches the changes in the folder name.  For example if you change the folder name to “myfolder” , you should type in
