@@ -4,7 +4,7 @@ designed to manage internal company directory records, handle organizational dep
 integrity.
 
 Core System Overview
-The Employee Management CRUD System serves as a secure central dashboard for administrative personnel. The application minimizes architectural complexity down to
+The Employee Management System serves as a secure central dashboard for administrative personnel. The application minimizes architectural complexity down to
 three core tables to guarantee ease of deployment while dynamically executing database protection protocols. Administrators can seamlessly onboard staff, assign them 
 to distinct corporate divisions, manage personal profile attributes, provision unique application logins, and execute safe purges without causing orphan records or application crashes.
 
