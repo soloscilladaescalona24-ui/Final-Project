@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() == 1062) {
-                $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Error: EmployeeID:  " . htmlspecialchars($EmployeeID) . " already has an assigned account. Please choose a different one.</p>";
+                $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Error: EmployeeID:  " . htmlspecialchars($EmployeeID) . " already has an assigned user account, choose another employee.</p>";
             } else {
                 $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Failed to create user account: " . htmlspecialchars($e->getMessage()) . "</p>";
             }
@@ -123,6 +123,7 @@ $emp_result = mysqli_query($conn, $emp_query);
 
         <button type="submit">Create User Account</button>
         <br><br>
+        <a href="uacreate.php">Refresh Table</a><br>
         <a href="index.php">Back to Main Page</a>
     </form>
 </div>
