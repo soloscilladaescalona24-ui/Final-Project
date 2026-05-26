@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
             }
         } catch (mysqli_sql_exception $e) {
             if ($e->getCode() == 1062) {
-                $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Error: The username '" . htmlspecialchars($username) . "' is already assigned to another account.</p>";
+                $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Error: The changes in Employee ID: '" . htmlspecialchars($employee_id) . "' conflicts with another account.</p>";
             } else {
                 $_SESSION['msg'] = "<p style='color: #121121; background-color: white; display: inline-block; padding: 10px; font-weight: bold; border-radius: 5px; margin-top: 10px;'>Update failed: " . htmlspecialchars($e->getMessage()) . "</p>";
             }
