@@ -67,6 +67,7 @@ $result = mysqli_query($conn, $sql);
         <br><br>
         <button type="submit">Create Department</button>
         <br><br>
+        <a href="Depcreate.php">Refresh Table</a><br>
         <a href="index.php">Back to Main Page</a>
     </form>
 </div>
