@@ -64,6 +64,7 @@ Open your web browser and go to: http://localhost/phpmyadmin/
 In the left panel, click New to create a database.
 Name the database crud and select utf8mb4_general_ci sorting representation, then click Create.
 Select the newly created crud database, open the SQL tab, copy the following script, and click Go:
+
 CREATE TABLE department (
     DepartmentID INT AUTO_INCREMENT PRIMARY KEY,
     DepartmentName VARCHAR(100) NOT NULL
